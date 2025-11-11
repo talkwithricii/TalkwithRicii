@@ -7,37 +7,45 @@
 }
 
 body {
-  background: #0d1117; /* Dark background */
-  color: #fff;          /* Default text color */
+  background: #0d1117;
+  color: #fff;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
+  padding: 0 1rem;
 }
 
 /* ===== HEADER ===== */
 header {
   text-align: center;
-  margin: 2rem 0 1rem 0;
+  margin: 2rem auto 1rem auto;
+  max-width: 1200px;
 }
 
 header h1 {
   font-size: 2rem;
-  color: #00d8ff; /* Accent color */
+  color: #00d8ff;
   letter-spacing: 1px;
+  line-height: 1.2;
 }
 
 header p {
   color: #ccc;
   margin-top: 0.5rem;
+  font-size: 0.95rem;
 }
 
 /* ===== NAVIGATION BAR / TABS ===== */
 .tabs {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   background: #161b22;
   padding: 10px;
   gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .tab-button {
@@ -60,11 +68,12 @@ header p {
 /* ===== CERTIFICATIONS GRID ===== */
 .cert-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  width: 90%;
-  max-width: 1000px;
+  width: 100%;
+  max-width: 1200px;
   margin: 2rem auto;
+  padding: 0 0.5rem;
 }
 
 /* ===== CERTIFICATION CARDS ===== */
@@ -85,7 +94,7 @@ header p {
 
 .cert-card img {
   width: 100%;
-  height: 180px;
+  height: auto; /* scale properly */
   object-fit: cover;
 }
 
@@ -109,7 +118,7 @@ header p {
   display: none;
   position: fixed;
   z-index: 1000;
-  padding-top: 80px;
+  padding-top: 60px;
   left: 0;
   top: 0;
   width: 100%;
@@ -159,7 +168,32 @@ header p {
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
-  margin: 3rem 0 1rem 0;
+  margin: 3rem auto 1rem auto;
   color: #555;
   font-size: 0.9rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  header h1 { font-size: 1.8rem; }
+  .cert-container { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  header h1 { font-size: 1.6rem; }
+  .cert-container { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .cert-card img { height: auto; }
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.4rem; }
+  .tabs { flex-direction: column; align-items: center; gap: 8px; }
+  .tab-button { width: 90%; text-align: center; padding: 10px; }
+  .cert-container { grid-template-columns: 1fr; gap: 1rem; }
+  .cert-card { border-radius: 12px; }
+  .cert-card img { height: auto; }
+  .cert-info h2 { font-size: 1rem; }
+  .cert-info p { font-size: 0.85rem; }
 }

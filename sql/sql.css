@@ -28,16 +28,42 @@ body.assemble { animation: assemblePage 1s ease-out; }
 
 /* Breadcrumb */
 header.breadcrumb {
-  padding: 16px 24px; background: var(--bg-panel); border-bottom: 1px solid var(--border-color); display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 16px 24px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 header.breadcrumb a { color: var(--accent); transition: color var(--transition); }
 header.breadcrumb a:hover { color: var(--accent-hover); }
 header.breadcrumb .separator { color: var(--text-dim); }
 
 /* Layout */
-.main-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; padding: 30px 40px; }
-.video-container { background: var(--bg-panel); border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,255,224,0.15); transition: transform 0.3s; }
+.main-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  padding: 30px 40px;
+}
+
+/* Video */
+.video-container {
+  background: var(--bg-panel);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,255,224,0.15);
+  transition: transform 0.3s;
+}
 .video-container:hover { transform: scale(1.01); }
+
+/* Responsive video ratio */
+.video-container iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  display: block;
+}
 
 /* Course Info */
 .course-info { margin-top: 20px; }
@@ -45,13 +71,38 @@ header.breadcrumb .separator { color: var(--text-dim); }
 .course-info p { color: var(--text-dim); }
 
 /* Explanation */
-.explanation { margin-top: 20px; background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); }
+.explanation {
+  margin-top: 20px;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
 .explanation h2 { color: var(--accent); margin-bottom: 12px; }
 .explanation h3 { margin-top: 18px; color: var(--accent-hover); }
-.code-container { background: #0d1117; padding: 15px; border-radius: 10px; margin-top: 10px; font-family: var(--font-code); overflow-x: auto; color: #00ffcc; border: 1px solid var(--border-color); }
+.code-container {
+  background: #0d1117;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-family: var(--font-code);
+  overflow-x: auto;
+  color: #00ffcc;
+  border: 1px solid var(--border-color);
+}
 
 /* Testimonials */
-.testimonials { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
+.testimonials {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.testimonials h2 {
+  color: var(--accent);
+  margin-bottom: 15px;
+  text-align: center;
+}
 
 /* Testimonial Card */
 .testimonial-card {
@@ -73,17 +124,41 @@ header.breadcrumb .separator { color: var(--text-dim); }
   margin-right: 15px;
   border: 2px solid var(--accent);
 }
-
 .testimonial-text p { margin: 0; font-size: 0.95rem; color: var(--text-light); }
 .testimonial-text span { display: block; margin-top: 6px; color: var(--text-dim); font-size: 0.85rem; }
 
 /* Contents Panel */
-.contents-panel { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); position: sticky; top: 20px; height: fit-content; }
-.contents-panel h2 { margin-bottom: 12px; color: var(--accent); text-shadow: 0 0 5px rgba(0,255,224,0.5); }
+.contents-panel {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+.contents-panel h2 {
+  margin-bottom: 12px;
+  color: var(--accent);
+  text-shadow: 0 0 5px rgba(0,255,224,0.5);
+  text-align: center;
+}
 
 .contents-section { margin-bottom: 16px; }
-.toggle-btn { width: 100%; text-align: left; background: var(--bg-panel); border: none; color: var(--text-light); padding: 10px 14px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all var(--transition);}
+.toggle-btn {
+  width: 100%;
+  text-align: left;
+  background: var(--bg-panel);
+  border: none;
+  color: var(--text-light);
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition);
+}
 .toggle-btn:hover { transform: scale(1.02); background: #111827; }
+
 .lesson-list { list-style: none; display: none; margin-top: 8px; }
 .lesson-list li { margin-bottom: 8px; }
 
@@ -111,7 +186,7 @@ header.breadcrumb .separator { color: var(--text-dim); }
 .lesson-link:hover { color: #000; }
 .lesson-active { background: var(--accent); color: #000 !important; font-weight: 600; }
 
-/* Exercise Buttons: subtle hover */
+/* Exercise Buttons */
 .exercise-link {
   display: inline-block;
   margin-top: 12px;
@@ -130,12 +205,60 @@ header.breadcrumb .separator { color: var(--text-dim); }
   transform: scale(1.05);
 }
 
-/* Responsive */
-@media(max-width:1024px){.main-layout{grid-template-columns:1fr; padding:20px;}.contents-panel{position:relative;top:0;}}
-@media(max-width:600px){
-  header.breadcrumb{font-size:0.9rem; padding:10px;} 
-  .course-info h1{font-size:1.3rem;} 
-  .code-container{font-size:12px;} 
-  .testimonial-card { flex-direction: column; align-items: flex-start; }
-  .testimonial-img { margin-bottom: 10px; }
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* --- Tablet --- */
+@media (max-width: 1024px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  /* Contents first */
+  .contents-panel {
+    order: -1;
+    position: relative;
+    top: 0;
+    margin-bottom: 20px;
+  }
+
+  .video-container iframe {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* --- Mobile --- */
+@media (max-width: 600px) {
+  header.breadcrumb {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .main-layout {
+    padding: 15px;
+    gap: 16px;
+  }
+
+  .course-info h1 { font-size: 1.3rem; }
+  .code-container { font-size: 12px; }
+
+  .testimonial-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .testimonial-img {
+    margin-bottom: 10px;
+  }
+
+  .contents-panel h2 {
+    font-size: 1.1rem;
+  }
+
+  .toggle-btn {
+    font-size: 0.9rem;
+  }
+
+  .lesson-link {
+    font-size: 0.9rem;
+  }
 }
