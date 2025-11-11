@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TalkwithRicii</title>
+  <link rel="stylesheet" href="index.css">
+  <script defer src="index.js"></script>
+  <script src="https://kit.fontawesome.com/a2e0e6b07b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <h1>TalkwithRicii</h1>
+    <input type="text" id="searchInput" placeholder="Search topic...">
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-button active" data-target="all">All</button>
+    <button class="tab-button" data-target="programming">Programming</button>
+    <button class="tab-button" data-target="web">Web</button>
+    <button class="tab-button" data-target="software">Software</button>
+    <button class="tab-button" data-target="certification">Certification</button>
+  </nav>
+
+  <main>
+    <!-- ALL -->
+    <div class="category-container active" id="all">
+      <div class="topic-tile"><a href="cpp/cpp.html"><i class="fa-solid fa-code"></i><h3>C++</h3><p>Learn C++ basics</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-solid fa-c"></i><h3>C</h3><p>Unavailable</p></a></div>
+      <div class="topic-tile"><a href="sql/sql.html"><i class="fa-solid fa-database"></i><h3>SQL</h3><p>Database queries</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-brands fa-python"></i><h3>Python</h3><p>Coming soon</p></a></div>
+      <div class="topic-tile unavailable"><a href="html/html.html"><i class="fa-brands fa-html5"></i><h3>HTML</h3><p>Build web pages</p></a></div>
+      <div class="topic-tile unavailable"><a href="css/css.html"><i class="fa-brands fa-css3-alt"></i><h3>CSS</h3><p>Style your site</p></a></div>
+      <div class="topic-tile unavailable"><a href="js/js.html"><i class="fa-brands fa-js"></i><h3>JavaScript</h3><p>Dynamic web logic</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-brands fa-react"></i><h3>React</h3><p>Coming soon</p></a></div>
+      <div class="topic-tile unavailable"><a href="vscode/vscode.html"><i class="fa-solid fa-laptop-code"></i><h3>VS Code</h3><p>IDE Tips</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-solid fa-terminal"></i><h3>Git</h3><p>Coming soon</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-solid fa-terminal"></i><h3>C# with ASP.NET</h3><p>Coming soon</p></a></div>
+      <div class="topic-tile"><a href="tileimage/cert.html"><i class="fa-solid fa-certificate"></i><h3>Certification</h3><p>IT Certificates & Guides</p></a></div>
+    </div>
+
+    <!-- PROGRAMMING -->
+    <div class="category-container" id="programming">
+      <div class="topic-tile"><a href="cpp/cpp.html"><i class="fa-solid fa-code"></i><h3>C++</h3><p>Learn C++ basics</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-solid fa-c"></i><h3>C</h3><p>Unavailable</p></a></div>
+      <div class="topic-tile"><a href="sql/sql.html"><i class="fa-solid fa-database"></i><h3>SQL</h3><p>Database queries</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-brands fa-python"></i><h3>Python</h3><p>Coming soon</p></a></div>
+    </div>
+
+    <!-- WEB -->
+    <div class="category-container" id="web">
+      <div class="topic-tile unavailable"><a href="html/html.html"><i class="fa-brands fa-html5"></i><h3>HTML</h3><p>Structure your pages</p></a></div>
+      <div class="topic-tile unavailable"><a href="css/css.html"><i class="fa-brands fa-css3-alt"></i><h3>CSS</h3><p>Style beautifully</p></a></div>
+      <div class="topic-tile unavailable"><a href="js/js.html"><i class="fa-brands fa-js"></i><h3>JavaScript</h3><p>Make sites interactive</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-brands fa-react"></i><h3>React</h3><p>Coming soon</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-solid fa-terminal"></i><h3>C# with ASP.NET</h3><p>Coming soon</p></a></div>
+    </div>
+
+    <!-- SOFTWARE -->
+    <div class="category-container" id="software">
+      <div class="topic-tile unavailable"><a href="vscode/vscode.html"><i class="fa-solid fa-laptop-code"></i><h3>VS Code</h3><p>Developer setup</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-solid fa-terminal"></i><h3>Git</h3><p>Coming soon</p></a></div>
+    </div>
+
+    <!-- CERTIFICATION -->
+    <div class="category-container" id="certification">
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-solid fa-certificate"></i><h3>Certification Guides</h3><p>Prepare for top IT certifications</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-solid fa-shield-halved"></i><h3>Cybersecurity+</h3><p>Coming soon</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-solid fa-network-wired"></i><h3>Networking</h3><p>Coming soon</p></a></div>
+      <div class="topic-tile unavailable"><a href="#"><i class="fa-solid fa-cloud"></i><h3>Cloud Fundamentals</h3><p>Coming soon</p></a></div>
+    </div>
+  </main>
+
+  <p id="noResults" class="hidden">No topics found 😢</p>
+</body>
+</html>

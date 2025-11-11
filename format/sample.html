@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MySQL Foundations | TalkwithRicii</title>
+  <link rel="stylesheet" href="sql.css">
+</head>
+<body class="assemble">
+
+  <!-- Breadcrumb -->
+  <header class="breadcrumb">
+    <a href="../index.html">All topics</a>
+    <span class="separator">/</span>
+    <a href="../index.html">Technology</a>
+    <span class="separator">/</span>
+    <span>Software Development</span>
+    <span class="separator">/</span>
+    <a href="sql.html">SQL</a>
+  </header>
+
+  <!-- Main Layout -->
+  <main class="main-layout">
+    <!-- LEFT: VIDEO + COURSE INFO -->
+    <section class="course-section">
+      <div class="video-container">
+        <div id="player"></div>
+      </div>
+
+      <div class="course-info">
+        <h1>Complete Guide to MySQL Foundations</h1>
+        <p><strong>With:</strong> TalkwithRicii · ❤️ Liked by 324 users</p>
+        <p>⏱ Duration: 6h 30m · 🧩 Skill Level: Beginner · 📅 Released: 10/31/2025</p>
+      </div>
+
+      <hr>
+
+      <!-- EXPLANATION SECTION -->
+      <div class="explanation">
+        <h2>Course Overview</h2>
+        <p>This course covers the fundamentals of MySQL database management — from creating databases and tables 
+        to performing queries, using constraints, and understanding joins. Practical examples and step-by-step 
+        instructions make it easy to grasp database concepts.</p>
+
+        <h3>Example SQL Code</h3>
+        <div class="code-container">
+<pre>
+-- Create a database
+CREATE DATABASE School;
+
+-- Use the database
+USE School;
+
+-- Create a table
+CREATE TABLE Students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT,
+    enrolled_date DATE
+);
+
+-- Insert sample data
+INSERT INTO Students (name, age, enrolled_date) VALUES 
+('Maria Santos', 20, '2025-01-15'),
+('John Reyes', 22, '2024-09-10');
+
+-- Query data
+SELECT * FROM Students;
+</pre>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- TESTIMONIALS -->
+      <section class="testimonials">
+        <h2>What Learners Say</h2>
+
+        <div class="testimonial-card">
+          <img src="images/maria.jpg" alt="Maria Santos" class="testimonial-img">
+          <div class="testimonial-text">
+            <p>“This MySQL course made databases understandable. I now feel confident writing queries and managing tables.”</p>
+            <span>- Maria Santos, IT Student</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <img src="images/john.jpg" alt="John Reyes" class="testimonial-img">
+          <div class="testimonial-text">
+            <p>“Step-by-step lessons helped me grasp joins and foreign keys easily. Highly recommended!”</p>
+            <span>- John Reyes, Developer</span>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- RIGHT: CONTENTS PANEL -->
+    <aside class="contents-panel">
+      <h2>Contents</h2>
+      <div id="course-contents"></div>
+    </aside>
+  </main>
+
+  <!-- YouTube API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="sql.js"></script>
+</body>
+</html>
