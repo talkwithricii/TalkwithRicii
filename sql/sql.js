@@ -34,6 +34,32 @@ const contents=[
 
 
 {
+  "name": "What You Should Know",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "What You Should Know (Before the Lesson)",
+    "paragraph": "",
+    "code": "What You Should Know (Before the Lesson)\n\n1. Databases Store Structured Information\n- Tables organize data into rows and columns.\n- Primary keys uniquely identify each record.\n- Foreign keys link tables together.\n\n2. Why Relationships Matter\n- Track customers, orders, and products correctly.\n- Prevent invalid or inconsistent data.\n- Answer real business questions (e.g., 'What did this customer buy?').\n\n3. Three Common Relationship Types\n- 1-to-Many (1:N): One user can have many orders.\n- Many-to-Many (M:N): Users can wishlist many products; products can appear in many wishlists.\n- 1-to-1 (1:1): One order typically has one payment record.\n\n4. Why We Use Foreign Keys\n- No order exists without a real user.\n- No review exists without a real product.\n- No shipment exists without a real order.\n- Foreign keys prevent data nonsense.\n\n5. Real-World E-Commerce Example\nA single action (placing an order) affects several tables:\n- Orders\n- OrderItems\n- Payment\n- Shipments\n- CouponUsage\n- ProductVariants (stock changes)\nYou must understand relationships to track this flow.\n\n6. You Will Learn to Think Like a Developer\nQuestions you will learn to answer:\n- Should a user be allowed to review a product they didn’t buy?\n- What happens if a seller is deleted?\n- Can two users add the same variant to their cart at the same time?"
+  }
+},
+
+
+
+{
+  "name": "Database Relationships",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Understanding Table Relationships in E-Commerce",
+    "paragraph": "Before creating all tables, it’s essential to understand how they connect. In an e-commerce system like LazadaRealDB, users can be sellers or customers, products have variants, and each purchase goes through orders, payments, and shipments. Relationships define how data links together, ensuring consistency and logical flow throughout the system.",
+    "code": "-- Relationship Overview\n\nUsers\n ├── Products (as seller)\n │     └── ProductVariants\n │           ├── OrderItems\n │           ├── Cart\n │           └── (via Orders → Payment → Shipments)\n ├── Orders (as customer)\n │     ├── OrderItems\n │     ├── Payment\n │     ├── Shipments → Couriers\n │     └── CouponUsage → Coupons\n ├── ProductReviews\n ├── SellerReviews\n ├── Wishlist → Products\n └── Cart → ProductVariants\n\n<a href='#' class='exercise-link'>Analyze Relationships Exercise</a>"
+  }
+},
+
+
+
+
+
+{
   "name": "Create Database",
   "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
   "content": {
@@ -554,16 +580,6 @@ const contents=[
     "title": "SELECT with LIKE (Pattern Matching)",
     "paragraph": "<b>Purpose</b><br>Search for text patterns in a table, useful for product searches, filtering, and reporting.<br><br><b>Problem Statement</b><br>The marketing team wants to find all products containing the word 'iPhone' in their name to create a targeted promotion. Write a SQL query using <code>LIKE</code> to retrieve these products.<br><br><b>Example Output:</b><br><table border='1'><tr><th>product_name</th></tr><tr><td>iPhone 15</td></tr></table><br><b>Important Syntax</b><br>SELECT column1 FROM table_name WHERE column1 LIKE 'pattern'; — Use % as a wildcard for any number of characters and _ for a single character.",
     "code": "SELECT product_name FROM Products\nWHERE product_name LIKE '%iPhone%';\n<a href='#' class='exercise-link'>Quiz 11 Exercise</a>"
-  }
-},
-
-{
-  "name": "Quiz 12 — SELECT with BETWEEN",
-  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
-  "content": {
-    "title": "SELECT with BETWEEN",
-    "paragraph": "<b>Purpose</b><br>Filter rows based on a numeric or date range, useful for pricing analysis, promotions, or reporting.<br><br><b>Problem Statement</b><br>The marketing team wants to find all product variants priced between 500 and 1000 PHP to plan a mid-range promotion. Write a SQL query to retrieve the SKU and price of these variants.<br><br><b>Example Output:</b><br><table border='1'><tr><th>sku</th><th>price</th></tr><tr><td>TSHIRT-M-BLK</td><td>499</td></tr><tr><td>TSHIRT-L-BLU</td><td>499</td></tr><tr><td>DRESS-S-RED</td><td>899</td></tr><tr><td>DRESS-M-YEL</td><td>899</td></tr></table><br><b>Important Syntax</b><br>SELECT column1, column2 FROM table_name WHERE column_name BETWEEN value1 AND value2; — Filters rows where the column value is within the specified range.",
-    "code": "SELECT sku, price FROM ProductVariants\nWHERE price BETWEEN 500 AND 1000;\n<a href='#' class='exercise-link'>Quiz 12 Exercise</a>"
   }
 },
 
