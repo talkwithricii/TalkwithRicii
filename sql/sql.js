@@ -589,7 +589,7 @@ const contents=[
   "content": {
     "title": "SELECT with BETWEEN",
     "paragraph": "<b>Purpose</b><br>Filter rows based on a numeric or date range, useful for pricing analysis, promotions, or reporting.<br><br><b>Problem Statement</b><br>The marketing team wants to find all product variants priced between 500 and 1000 PHP to plan a mid-range promotion. Write a SQL query to retrieve the SKU and price of these variants.<br><br><b>Example Output:</b><br><table border='1'><tr><th>sku</th><th>price</th></tr><tr><td>TSHIRT-M-BLK</td><td>499</td></tr><tr><td>TSHIRT-L-BLU</td><td>499</td></tr><tr><td>DRESS-S-RED</td><td>899</td></tr><tr><td>DRESS-M-YEL</td><td>899</td></tr></table><br><b>Important Syntax</b><br>SELECT column1, column2 FROM table_name WHERE column_name BETWEEN value1 AND value2; — Filters rows where the column value is within the specified range.",
-    "code": "SELECT sku, price FROM ProductVariants\nWHERE price BETWEEN 500 AND 1000;\n<a href='#' class='exercise-link'>Quiz 12 Exercise</a>"
+   "code": "SELECT sku, price FROM ProductVariants\nWHERE price BETWEEN 500 AND 1000;\n<a href='#' class='exercise-link'>Quiz 12 Exercise</a>"
   }
 },
 
@@ -599,7 +599,153 @@ const contents=[
   "content": {
     "title": "SELECT with IN (Multiple Values)",
     "paragraph": "<b>Purpose</b><br>Filter rows based on multiple possible values without writing multiple OR conditions, useful for selecting specific options like colors, categories, or sellers.<br><br><b>Problem Statement</b><br>The marketing team wants to find all product variants that are either Black or White to feature in a monochrome-themed promotion. Write a SQL query to retrieve the SKU and color of these variants.<br><br><b>Example Output:</b><br><table border='1'><tr><th>sku</th><th>color</th></tr><tr><td>IP15-BLK-128</td><td>Black</td></tr><tr><td>IP15-WHT-256</td><td>White</td></tr><tr><td>ASUS-ROG-16GB</td><td>Black</td></tr><tr><td>TSHIRT-M-BLK</td><td>Black</td></tr></table><br><b>Important Syntax</b><br>SELECT column1, column2 FROM table_name WHERE column_name IN (value1, value2, ...); — Filters rows where the column matches any value in the list.",
-    "code": "SELECT sku, color FROM ProductVariants\nWHERE color IN ('Black', 'White');\n<a href='#' class='exercise-link'>Quiz 13 Exercise</a>"
+   "code": "SELECT sku, color FROM ProductVariants\nWHERE color IN ('Black', 'White');\n<a href='#' class='exercise-link'>Quiz 13 Exercise</a>"
+  }
+},
+
+{
+  "name": "Quiz 1: Top-Selling Products",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 1 — Top-Selling Products",
+    "paragraph": "<b>Purpose</b><br>Identify the products with the highest total quantity sold to prioritize best-sellers.<br><br><b>Problem Statement</b><br>Find the top 5 products with the highest total quantity sold.<br><br><b>Example Output:</b><br><table border='1'><tr><th>product_name</th><th>total_sold</th></tr><tr><td>iPhone 15</td><td>25</td></tr><tr><td>Asus ROG Laptop</td><td>10</td></tr><tr><td>Men Cotton T-Shirt</td><td>8</td></tr></table><br><b>Important Syntax</b><br>SUM() → sum values<br>JOIN → combine tables<br>GROUP BY → aggregate per product<br>ORDER BY ... DESC → sort descending<br>LIMIT → restrict rows",
+  // "code": "SELECT p.product_name, SUM(oi.quantity) AS total_sold\nFROM Products p\nJOIN ProductVariants pv ON p.product_id = pv.product_id\nJOIN OrderItems oi ON pv.variant_id = oi.variant_id\nGROUP BY p.product_name\nORDER BY total_sold DESC\nLIMIT 5;\n<a href='#' class='exercise-link'>Quiz 1 Exercise</a>"
+  }
+},
+
+{
+  "name": "QUIZ 2 Low-Stock Alert",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 2 — Low-Stock Alert",
+    "paragraph": "<b>Purpose</b><br>Identify product variants with low stock to notify sellers and prevent stockouts.<br><br><b>Problem Statement</b><br>Find all product variants with stock below 10 units.<br><br><b>Example Output:</b><br><table border='1'><tr><th>sku</th><th>product_name</th><th>stock</th></tr><tr><td>IP15-WHT-256</td><td>iPhone 15</td><td>5</td></tr><tr><td>DRESS-M-YEL</td><td>Women Summer Dress</td><td>3</td></tr></table><br><b>Important Syntax</b><br>WHERE → filter conditions<br>JOIN → combine tables for product name",
+  //  "code": "SELECT pv.sku, p.product_name, pv.stock\nFROM ProductVariants pv\nJOIN Products p ON pv.product_id = p.product_id\nWHERE pv.stock < 10;\n<a href='#' class='exercise-link'>Quiz 2 Exercise</a>"
+  }
+},
+
+{
+  "name": "Quiz 3 Customer Purchase History",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 3 — Customer Purchase History",
+    "paragraph": "<b>Purpose</b><br>Retrieve all orders and purchased items for a specific customer to analyze their buying behavior.<br><br><b>Problem Statement</b><br>List all orders and items for a specific customer (e.g., customer_id = 1).<br><br><b>Example Output:</b><br><table border='1'><tr><th>order_id</th><th>order_date</th><th>product_name</th><th>sku</th><th>quantity</th><th>price</th></tr><tr><td>1</td><td>2025-11-10 09:00</td><td>iPhone 15</td><td>IP15-BLK-128</td><td>1</td><td>69900</td></tr><tr><td>1</td><td>2025-11-10 09:00</td><td>Men Cotton T-Shirt</td><td>TSHIRT-M-BLK</td><td>2</td><td>499</td></tr></table><br><b>Important Syntax</b><br>Multiple JOINs → combine Orders, OrderItems, Products, Variants<br>WHERE → filter by customer",
+   // "code": "SELECT o.order_id, o.order_date, p.product_name, pv.sku, oi.quantity, oi.price\nFROM Orders o\nJOIN OrderItems oi ON o.order_id = oi.order_id\nJOIN ProductVariants pv ON oi.variant_id = pv.variant_id\nJOIN Products p ON pv.product_id = p.product_id\nWHERE o.customer_id = 1;\n<a href='#' class='exercise-link'>Quiz 3 Exercise</a>"
+  }
+},
+
+{
+  "name": "Quiz 4 Seller Revenue Report",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 4 — Seller Revenue Report",
+    "paragraph": "<b>Purpose</b><br>Calculate total revenue per seller to evaluate performance and earnings.<br><br><b>Problem Statement</b><br>Calculate total revenue per seller from completed orders.<br><br><b>Example Output:</b><br><table border='1'><tr><th>seller_name</th><th>total_revenue</th></tr><tr><td>TechHub PH</td><td>250000</td></tr><tr><td>StyleCorner</td><td>12000</td></tr></table><br><b>Important Syntax</b><br>SUM(quantity * price) → total revenue<br>GROUP BY → per seller<br>JOIN → combine tables",
+ //   "code": "SELECT u.full_name AS seller_name, SUM(oi.quantity * oi.price) AS total_revenue\nFROM Users u\nJOIN Products p ON u.user_id = p.seller_id\nJOIN ProductVariants pv ON p.product_id = pv.product_id\nJOIN OrderItems oi ON pv.variant_id = oi.variant_id\nJOIN Orders o ON oi.order_id = o.order_id\nWHERE o.status IN ('Paid','Shipped','Delivered')\nGROUP BY u.full_name;\n<a href='#' class='exercise-link'>Quiz 4 Exercise</a>"
+  }
+},
+
+{
+  "name": "Quiz 5 Orders Pending Shipment",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 5 — Orders Pending Shipment",
+    "paragraph": "<b>Purpose</b><br>Identify all paid orders that have not yet been shipped so the warehouse can process them.<br><br><b>Problem Statement</b><br>List all orders that are paid but not yet shipped.<br><br><b>Example Output:</b><br><table border='1'><tr><th>order_id</th><th>customer_name</th><th>order_date</th><th>total_amount</th></tr><tr><td>1</td><td>Juan Dela Cruz</td><td>2025-11-10 09:00</td><td>70898</td></tr></table><br><b>Important Syntax</b><br>Filter by status<br>SUM(quantity * price) → total order amount<br>GROUP BY → aggregate per order",
+    // "code": "SELECT o.order_id, u.full_name AS customer_name, o.order_date,\n       SUM(oi.quantity * oi.price) AS total_amount\nFROM Orders o\nJOIN Users u ON o.customer_id = u.user_id\nJOIN OrderItems oi ON o.order_id = oi.order_id\nWHERE o.status = 'Paid' AND u.role = 'Customer'\nGROUP BY o.order_id, u.full_name, o.order_date;\n<a href='#' class='exercise-link'>Quiz 5 Exercise</a>"
+  }
+},
+
+]},
+
+     {title:"Automatically Updating Stock After Order",
+   lessons:[
+   
+    
+{
+  "name": "Stock Update Workflow",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 9 — Stock Update Workflow",
+    "paragraph": "<b>Purpose</b><br>Demonstrate the full workflow for updating stock when an order is placed: check current stock, apply stock reduction, and verify the update.<br><br><b>Problem Statement</b><br>For a given order, reduce the stock of all ordered product variants and verify the stock before and after the update.<br><br><b>Example Output:</b><br><b>Before Update:</b><br><table border='1'><tr><th>variant_id</th><th>sku</th><th>stock</th></tr><tr><td>1</td><td>IP15-BLK-128</td><td>50</td></tr><tr><td>6</td><td>TSHIRT-M-BLK</td><td>100</td></tr></table><br><b>After Update:</b><br><table border='1'><tr><th>variant_id</th><th>sku</th><th>stock</th></tr><tr><td>1</td><td>IP15-BLK-128</td><td>48</td></tr><tr><td>6</td><td>TSHIRT-M-BLK</td><td>98</td></tr></table><br><b>Important Syntax</b><br>SELECT ... WHERE column IN (...) → check multiple records<br>UPDATE table1 JOIN table2 ... SET column = value → update related records",
+    "code": "-- Step 1: Check Current Stock\nSELECT variant_id, sku, stock\nFROM ProductVariants\nWHERE variant_id IN (\n    SELECT variant_id\n    FROM OrderItems\n    WHERE order_id = 1\n);\n\n-- Step 2: Apply Stock Update\nUPDATE ProductVariants pv\nJOIN OrderItems oi ON pv.variant_id = oi.variant_id\nJOIN Orders o ON oi.order_id = o.order_id\nSET pv.stock = pv.stock - oi.quantity\nWHERE o.order_id = 1;\n\n-- Step 3: Verify Stock\nSELECT variant_id, sku, stock\nFROM ProductVariants\nWHERE variant_id IN (\n    SELECT variant_id\n    FROM OrderItems\n    WHERE order_id = 1\n);\n<a href='#' class='exercise-link'>Quiz 9 Exercise</a>"
+  }
+},
+
+{
+  "name": "Cancelling Orders & Restoring Stock Workflow",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 10 — Cancelling Orders & Restoring Stock Workflow",
+    "paragraph": "<b>Purpose</b><br>Demonstrate the full workflow for cancelling an order and restoring the stock: check current stock and status, apply cancellation and stock restoration, and verify the update.<br><br><b>Problem Statement</b><br>For a given order, cancel it before shipment, restore the stock of all ordered product variants, and verify the changes.<br><br><b>Example Output:</b><br><b>Before Cancel:</b><br><table border='1'><tr><th>order_id</th><th>status</th><th>variant_id</th><th>sku</th><th>stock</th></tr><tr><td>2</td><td>Paid</td><td>2</td><td>IP15-WHT-256</td><td>30</td></tr></table><br><b>After Cancel:</b><br><table border='1'><tr><th>order_id</th><th>status</th><th>variant_id</th><th>sku</th><th>stock</th></tr><tr><td>2</td><td>Cancelled</td><td>2</td><td>IP15-WHT-256</td><td>31</td></tr></table><br><b>Important Syntax</b><br>SELECT ... JOIN ... → check multiple related tables<br>UPDATE table1 JOIN table2 ... SET column = value → update related records<br>UPDATE table_name SET column = value WHERE condition → update order status",
+    "code": "-- Step 1: Check Current Stock & Order Status\nSELECT o.order_id, o.status, pv.variant_id, pv.sku, pv.stock\nFROM Orders o\nJOIN OrderItems oi ON o.order_id = oi.order_id\nJOIN ProductVariants pv ON oi.variant_id = pv.variant_id\nWHERE o.order_id = 2;\n\n-- Step 2: Apply Cancel & Restore Stock\n-- Restore stock\nUPDATE ProductVariants pv\nJOIN OrderItems oi ON pv.variant_id = oi.variant_id\nSET pv.stock = pv.stock + oi.quantity\nWHERE oi.order_id = 2;\n\n-- Update order status\nUPDATE Orders\nSET status = 'Cancelled'\nWHERE order_id = 2;\n\n-- Step 3: Verify Changes\nSELECT o.order_id, o.status, pv.variant_id, pv.sku, pv.stock\nFROM Orders o\nJOIN OrderItems oi ON o.order_id = oi.order_id\nJOIN ProductVariants pv ON oi.variant_id = pv.variant_id\nWHERE o.order_id = 2;\n<a href='#' class='exercise-link'>Quiz 10 Exercise</a>"
+  }
+},
+
+{
+  "name": "Processing Refunds Workflow",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 11 — Processing Refunds Workflow",
+    "paragraph": "<b>Purpose</b><br>Demonstrate the full workflow for processing a refund: ensure ENUM columns support refund values, check current payments and order status, apply the refund, and verify updates.<br><br><b>Problem Statement</b><br>When an order is cancelled or returned, insert a refund record in the Payment table and update the order status to 'Refunded'.<br><br><b>Example Output:</b><br><b>Before Refund:</b><br><b>Payments table:</b><br><table border='1'><tr><th>payment_id</th><th>order_id</th><th>amount</th><th>payment_method</th><th>status</th></tr><tr><td>2</td><td>2</td><td>75900</td><td>Credit Card</td><td>Completed</td></tr></table><br><b>Orders table:</b><br><table border='1'><tr><th>order_id</th><th>status</th></tr><tr><td>2</td><td>Cancelled</td></tr></table><br><b>After Refund:</b><br><b>Payments table:</b><br><table border='1'><tr><th>payment_id</th><th>order_id</th><th>amount</th><th>payment_method</th><th>status</th></tr><tr><td>2</td><td>2</td><td>75900</td><td>Credit Card</td><td>Completed</td></tr><tr><td>4</td><td>2</td><td>75900</td><td>Refund</td><td>Refunded</td></tr></table><br><b>Orders table:</b><br><table border='1'><tr><th>order_id</th><th>status</th></tr><tr><td>2</td><td>Refunded</td></tr></table><br><b>Important Syntax</b><br>ALTER TABLE ... MODIFY ENUM → update ENUM values<br>INSERT INTO table_name (...) VALUES (...) → insert refund record<br>UPDATE table_name SET column = value WHERE condition → update order status<br>SELECT ... WHERE ... → verify changes",
+    "code": "-- Step 0: Make ENUM Columns Refund-Safe\nALTER TABLE Orders\nMODIFY status ENUM('Pending','Paid','Shipped','Delivered','Cancelled','Refunded') DEFAULT 'Pending';\n\nALTER TABLE Payment\nMODIFY payment_method ENUM('Credit Card','GCash','PayPal','COD','Refund');\n\nALTER TABLE Payment\nMODIFY status ENUM('Pending','Completed','Failed','Refunded') DEFAULT 'Pending';\n\n-- Step 1: Check Current Payments & Order Status\nSELECT * FROM Payment\nWHERE order_id = 2;\n\nSELECT order_id, status FROM Orders\nWHERE order_id = 2;\n\n-- Step 2: Apply Refund\nINSERT INTO Payment (order_id, amount, payment_method, status)\nSELECT order_id, SUM(quantity * price), 'Refund', 'Refunded'\nFROM OrderItems\nWHERE order_id = 2\nGROUP BY order_id;\n\nUPDATE Orders\nSET status = 'Refunded'\nWHERE order_id = 2;\n\n-- Step 3: Verify Changes\nSELECT * FROM Payment\nWHERE order_id = 2;\n\nSELECT order_id, status FROM Orders\nWHERE order_id = 2;\n<a href='#' class='exercise-link'>Quiz 11 Exercise</a>"
+  }
+},
+
+{
+  "name": "Seller Rating Update",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 12 — Add Seller Rating & Update Average",
+    "paragraph": "<b>Purpose</b><br>Add a rating column to the Users table to store the seller's average rating and update it based on existing reviews.<br><br><b>Problem Statement</b><br>Add a 'rating' column to the Users table for sellers, check the current rating, and update it from the SellerReviews table.<br><br><b>Example Output:</b><br><b>Before Update:</b><br><table border='1'><tr><th>user_id</th><th>full_name</th><th>role</th><th>rating</th></tr><tr><td>4</td><td>TechHub PH</td><td>Seller</td><td>0.00</td></tr></table><br><b>Important Syntax</b><br>ALTER TABLE table_name ADD COLUMN column_name data_type DEFAULT value; → add new column<br>DESCRIBE table_name; → verify column exists<br>UPDATE table_name SET column = (SELECT AVG(...) ...) WHERE condition; → calculate average<br>SELECT ... FROM table_name; → verify update",
+    "code": "-- Step 1: Add rating column to Users\nALTER TABLE Users\nADD COLUMN rating DECIMAL(3,2) DEFAULT 0;\n\n-- Step 2: Verify Column Exists\nDESCRIBE Users;\n\n-- Step 3: Check Current Seller Rating\nSELECT user_id, full_name, role, rating\nFROM Users\nWHERE user_id = 4;\n\n-- Step 4: Update Seller Rating from SellerReviews\nUPDATE Users u\nSET u.rating = (\n    SELECT AVG(sr.rating)\n    FROM SellerReviews sr\n    WHERE sr.seller_id = u.user_id\n)\nWHERE u.user_id = 4;\n\n-- Step 5: Verify Updated Rating\nSELECT * FROM Users;\n<a href='#' class='exercise-link'>Quiz 12 Exercise</a>"
+  }
+},
+
+{
+  "name": "Cheapest and Most Expensive Product Variants",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 13 — MIN & MAX: Cheapest and Most Expensive Product Variants",
+    "paragraph": "<b>Purpose</b><br>Find the product variants with the lowest and highest prices in the system to analyze pricing extremes.<br><br><b>Problem Statement</b><br>Identify the cheapest and most expensive product variants.<br><br><b>Example Current ProductVariants Table:</b><br><table border='1'><tr><th>variant_id</th><th>product_id</th><th>sku</th><th>color</th><th>size</th><th>stock</th><th>price</th></tr><tr><td>1</td><td>1</td><td>IP15-BLK-128</td><td>Black</td><td>128GB</td><td>50</td><td>69900</td></tr><tr><td>2</td><td>1</td><td>IP15-PRO-WHT</td><td>White</td><td>512GB</td><td>10</td><td>105000</td></tr><tr><td>3</td><td>2</td><td>TSHIRT-M-BLK</td><td>Black</td><td>M</td><td>100</td><td>500</td></tr></table><br><b>Example Output (Cheapest & Most Expensive):</b><br><table border='1'><tr><th>product_id</th><th>sku</th><th>color</th><th>size</th><th>stock</th><th>price</th></tr><tr><td>1</td><td>IP15-BLK-128</td><td>Black</td><td>128GB</td><td>50</td><td>69900</td></tr><tr><td>1</td><td>IP15-PRO-WHT</td><td>White</td><td>512GB</td><td>10</td><td>105000</td></tr></table><br><b>Important Syntax</b><br>MIN(column) → find minimum value<br>MAX(column) → find maximum value<br>WHERE ... = (SELECT MIN(...) / MAX(...)) → filter rows based on min/max value<br>SELECT ... → retrieve matching rows",
+    "code": "-- Step 1: Check Current ProductVariants Table\nSELECT * FROM ProductVariants;\n\n-- Step 2: Apply MIN/MAX Query\nSELECT product_id, sku, color, size, stock, price\nFROM ProductVariants\nWHERE price = (SELECT MIN(price) FROM ProductVariants)\n   OR price = (SELECT MAX(price) FROM ProductVariants);\n\n-- Step 3: Verify Changes (no actual data change)\nSELECT product_id, sku, color, size, stock, price\nFROM ProductVariants\nWHERE price = (SELECT MIN(price) FROM ProductVariants)\n   OR price = (SELECT MAX(price) FROM ProductVariants);\n<a href='#' class='exercise-link'>Quiz 13 Exercise</a>"
+  }
+},
+
+{
+  "name": "INNER JOIN Order Items with Product Info",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 14 — INNER JOIN: Order Items with Product Info",
+    "paragraph": "<b>Purpose</b><br>Combine order items with product and variant details using INNER JOIN to get meaningful order information.<br><br><b>Problem Statement</b><br>Show all order items along with their product name and SKU.<br><br><b>Example Current Tables:</b><br><b>OrderItems:</b><br><table border='1'><tr><th>order_item_id</th><th>order_id</th><th>variant_id</th><th>quantity</th><th>price</th></tr><tr><td>1</td><td>1</td><td>1</td><td>2</td><td>69900</td></tr><tr><td>2</td><td>2</td><td>3</td><td>1</td><td>500</td></tr></table><br><b>ProductVariants:</b><br><table border='1'><tr><th>variant_id</th><th>product_id</th><th>sku</th></tr><tr><td>1</td><td>1</td><td>IP15-BLK-128</td></tr><tr><td>3</td><td>2</td><td>TSHIRT-M-BLK</td></tr></table><br><b>Products:</b><br><table border='1'><tr><th>product_id</th><th>product_name</th></tr><tr><td>1</td><td>iPhone 15</td></tr><tr><td>2</td><td>T-Shirt M</td></tr></table><br><b>Example Output:</b><br><table border='1'><tr><th>order_id</th><th>product_name</th><th>sku</th><th>quantity</th><th>price</th></tr><tr><td>1</td><td>iPhone 15</td><td>IP15-BLK-128</td><td>2</td><td>69900</td></tr><tr><td>2</td><td>T-Shirt M</td><td>TSHIRT-M-BLK</td><td>1</td><td>500</td></tr></table><br><b>Important Syntax</b><br>INNER JOIN → combine tables where matching values exist<br>SELECT ... FROM table1 INNER JOIN table2 ON condition → retrieve combined data",
+    "code": "-- Step 1: Check Current Tables\nSELECT * FROM OrderItems;\nSELECT * FROM ProductVariants;\nSELECT * FROM Products;\n\n-- Step 2: Apply INNER JOIN Query\nSELECT oi.order_id, p.product_name, pv.sku, oi.quantity, oi.price\nFROM OrderItems oi\nINNER JOIN ProductVariants pv ON oi.variant_id = pv.variant_id\nINNER JOIN Products p ON pv.product_id = p.product_id;\n\n-- Step 3: Verify Output\nSELECT oi.order_id, p.product_name, pv.sku, oi.quantity, oi.price\nFROM OrderItems oi\nINNER JOIN ProductVariants pv ON oi.variant_id = pv.variant_id\nINNER JOIN Products p ON pv.product_id = p.product_id;\n<a href='#' class='exercise-link'>Quiz 14 Exercise</a>"
+  }
+},
+
+{
+  "name": "LEFT JOIN All Orders with Shipments",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 15 — LEFT JOIN: All Orders with Shipments",
+    "paragraph": "<b>Purpose</b><br>Retrieve all orders including those without shipments, ensuring no orders are omitted from the results.<br><br><b>Problem Statement</b><br>Show all orders along with customer names and shipment IDs, including orders that have not yet been shipped.<br><br><b>Example Tables:</b><br><b>Orders:</b> contains all orders.<br><b>Shipments:</b> contains shipment records.<br><b>Users:</b> contains customer information.<br><br><b>Example Output:</b><br><table border='1'><tr><th>order_id</th><th>customer_name</th><th>shipment_id</th><th>status</th></tr><tr><td>1</td><td>Juan Dela Cruz</td><td>1</td><td>Shipped</td></tr><tr><td>2</td><td>Maria Santos</td><td>NULL</td><td>Paid</td></tr></table><br><b>Important Syntax</b><br>LEFT JOIN → include all rows from left table and matching rows from right table (NULL if no match)<br>SELECT ... FROM table1 LEFT JOIN table2 ON condition → combine tables while preserving left table rows",
+    "code": "-- Step 1: Check Tables\nSELECT * FROM Orders;\nSELECT * FROM Shipments;\nSELECT * FROM Users;\n\n-- Step 2: Apply LEFT JOIN\nSELECT o.order_id, u.full_name AS customer_name, s.shipment_id, o.status\nFROM Orders o\nLEFT JOIN Shipments s ON o.order_id = s.order_id\nLEFT JOIN Users u ON o.customer_id = u.user_id;\n\n-- Step 3: Verify Output\nSELECT o.order_id, u.full_name AS customer_name, s.shipment_id, o.status\nFROM Orders o\nLEFT JOIN Shipments s ON o.order_id = s.order_id\nLEFT JOIN Users u ON o.customer_id = u.user_id;\n<a href='#' class='exercise-link'>Quiz 15 Exercise</a>"
+  }
+},
+
+{
+  "name": "Correlated Subquery Above-Average Priced Products",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 16 — Correlated Subquery: Above-Average Priced Products",
+    "paragraph": "<b>Purpose</b><br>Use a correlated subquery to filter product variants that are priced above the average price.<br><br><b>Problem Statement</b><br>List all product variants whose price is higher than the average price of all variants.<br><br><b>Example ProductVariants Table:</b><br><table border='1'><tr><th>variant_id</th><th>product_id</th><th>sku</th><th>price</th></tr><tr><td>1</td><td>1</td><td>IP15-BLK-128</td><td>69900</td></tr><tr><td>2</td><td>1</td><td>IP15-PRO-WHT</td><td>105000</td></tr><tr><td>3</td><td>2</td><td>TSHIRT-M-BLK</td><td>500</td></tr></table><br><b>Example Output:</b><br><table border='1'><tr><th>sku</th><th>product_id</th><th>price</th></tr><tr><td>IP15-PRO-WHT</td><td>1</td><td>105000</td></tr></table><br><b>Important Syntax</b><br>SELECT ... FROM table WHERE column > (SELECT AVG(column) FROM table) → correlated subquery to compare each row against an aggregate value",
+    "code": "-- Step 1: Check ProductVariants Table\nSELECT * FROM ProductVariants;\n\n-- Step 2: Apply Correlated Subquery\nSELECT sku, product_id, price\nFROM ProductVariants pv\nWHERE price > (SELECT AVG(price) FROM ProductVariants);\n\n-- Step 3: Verify Output\nSELECT sku, product_id, price\nFROM ProductVariants pv\nWHERE price > (SELECT AVG(price) FROM ProductVariants);\n<a href='#' class='exercise-link'>Quiz 16 Exercise</a>"
+  }
+},
+
+{
+  "name": " FULL OUTER JOIN All Orders and Shipments",
+  "url": "https://www.youtube.com/embed/SmM2XqJH0eE",
+  "content": {
+    "title": "Quiz 17 — FULL OUTER JOIN: Include All Orders and All Shipments",
+    "paragraph": "<b>Purpose</b><br>Retrieve all orders and all shipments, including orders without shipments and shipments not linked to an order, using a FULL OUTER JOIN workaround in MySQL.<br><br><b>Problem Statement</b><br>Show all orders and all shipments even if some orders have no shipments yet or some shipments are not linked to an order.<br><br><b>Example Tables:</b><br><b>Orders:</b><br><table border='1'><tr><th>order_id</th><th>customer_id</th><th>status</th></tr><tr><td>1</td><td>1</td><td>Shipped</td></tr><tr><td>2</td><td>2</td><td>Paid</td></tr><tr><td>3</td><td>3</td><td>Paid</td></tr></table><br><b>Shipments:</b><br><table border='1'><tr><th>shipment_id</th><th>order_id</th><th>courier_id</th><th>status</th></tr><tr><td>1</td><td>1</td><td>1</td><td>Delivered</td></tr><tr><td>2</td><td>4</td><td>2</td><td>Pending</td></tr></table><br><b>Expected Output:</b><br><table border='1'><tr><th>order_id</th><th>shipment_id</th><th>order_status</th><th>shipment_status</th></tr><tr><td>1</td><td>1</td><td>Shipped</td><td>Delivered</td></tr><tr><td>2</td><td>NULL</td><td>Paid</td><td>NULL</td></tr><tr><td>3</td><td>NULL</td><td>Paid</td><td>NULL</td></tr><tr><td>NULL</td><td>2</td><td>NULL</td><td>Pending</td></tr></table><br><b>Important Syntax</b><br>LEFT JOIN → include all left table rows<br>RIGHT JOIN → include all right table rows<br>UNION → combine results to simulate FULL OUTER JOIN in MySQL",
+    "code": "-- Step 1: Check Current Tables\nSELECT * FROM Orders;\nSELECT * FROM Shipments;\n\n-- Step 2: Apply FULL OUTER JOIN Workaround\nSELECT o.order_id, s.shipment_id, o.status AS order_status, s.status AS shipment_status\nFROM Orders o\nLEFT JOIN Shipments s ON o.order_id = s.order_id\n\nUNION\n\nSELECT o.order_id, s.shipment_id, o.status AS order_status, s.status AS shipment_status\nFROM Orders o\nRIGHT JOIN Shipments s ON o.order_id = s.order_id;\n\n-- Step 3: Verify Output\nSELECT o.order_id, s.shipment_id, o.status AS order_status, s.status AS shipment_status\nFROM Orders o\nLEFT JOIN Shipments s ON o.order_id = s.order_id\nUNION\nSELECT o.order_id, s.shipment_id, o.status AS order_status, s.status AS shipment_status\nFROM Orders o\nRIGHT JOIN Shipments s ON o.order_id = s.order_id;\n<a href='#' class='exercise-link'>Quiz 17 Exercise</a>"
   }
 }
 
@@ -616,6 +762,12 @@ const contents=[
 
 
 
+  
+  
+  
+  
+  
+  ]},
 
 
 
@@ -627,19 +779,7 @@ const contents=[
 
 
 
-
-
-
-
-
-
-]},
-
-
-
-
-
-     {title:"",
+        {title:"",
    lessons:[
     {name:"", url:"https://www.youtube.com/embed/someID", content:{title:"LEFT JOIN - Include All Left Table", paragraph:"Retrieve all from left table.", code:"SELECT e.name, d.department_name FROM employees AS e LEFT JOIN departments AS d ON e.department_id = d.id;\n<a href='leftjoinpractice/leftjoin-practice.html' class='exercise-link'>LEFT JOIN Practice</a>"}}
    ]}

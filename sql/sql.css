@@ -262,3 +262,8 @@ header.breadcrumb .separator { color: var(--text-dim); }
     font-size: 0.9rem;
   }
 }
+
+/* Existing CSS ... */
+.hidden-code { display: none; }
+
+
