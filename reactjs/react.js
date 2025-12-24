@@ -43,30 +43,15 @@ const contents = [
   },
 
   {
-    title: "React Registration Form",
+    title: "Building a Registration Form in React",
     lessons: [
-      {
-        name: "useState in React Forms",
-        url: "https://youtu.be/7PNR2aBLIi4",
-        content: {
-          title: "",
-          paragraph: "",
-        code: `
-<a href='Quiz.html' class='exercise-link'>Operators Exercise</a>`
-        }
-      },
-      {
-        name: "Operators and Expressions",
-        url: "https://www.youtube.com/embed/VIDEOID4",
-        content: {
-          title: "Using Operators",
-          paragraph: "Perform arithmetic, relational, and logical operations.",
-          code: `int a = 5, b = 3;
-cout << "Sum: " << a + b << endl;
-cout << "Product: " << a * b << endl;
-<a href='#' class='exercise-link'>Operators Exercise</a>`
-        }
-      }
+     { name: "Importing Libraries", url: "https://youtu.be/AADB2aeo8iE" },
+      { name: "Creating Function", url: "https://youtu.be/gJADP6eLsTY" },
+      { name: "Sending and Response", url: "https://youtu.be/bD-9Hlj6N80" },
+      { name: "Form", url: "https://youtu.be/4ITl37ESex4" },
+     
+
+
     ]
   }
 ];
